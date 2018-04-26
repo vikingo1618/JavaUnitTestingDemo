@@ -33,13 +33,12 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.19</version>
 				<dependencies>
+				
 					<dependency>
 						<groupId>org.junit.platform</groupId>
 						<artifactId>junit-platform-surefire-provider</artifactId>
 						<version>${junit.platform.version}</version>
 					</dependency>
-
-
 				</dependencies>
 			</plugin>
 		</plugins>
@@ -71,6 +70,18 @@
 			<version>${junit.vintage.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-all</artifactId>
+    <version>1.8.4</version>
+    <scope>test</scope>
+</dependency>
+		
+		
 	</dependencies>
+	
+	
 
 </project>
