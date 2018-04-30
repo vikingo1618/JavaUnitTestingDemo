@@ -7,9 +7,9 @@ public class CandyMachineTest {
 	@Test
 	public void validateCandyMachineChains() {
 		
-		ICandyMachine chain1 = new GansitoImpl();
-		ICandyMachine chain2 = new NitoImpl();
-		ICandyMachine chain3 = new LollipopImpl();
+		CandyMachine chain1 = new GansitoImpl();
+		CandyMachine chain2 = new NitoImpl();
+		CandyMachine chain3 = new LollipopImpl();
 		
 		chain1.setNextChain(chain2);
 		chain2.setNextChain(chain3);

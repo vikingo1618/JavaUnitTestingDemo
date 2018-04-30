@@ -1,27 +1,22 @@
 package chainofresponsabilities;
 
-public class LollipopImpl implements ICandyMachine {
+public class LollipopImpl extends CandyMachine {
 
-	private ICandyMachine chain;
+	private CandyMachine chain;
 	private double price = 5;
 	
 	@Override
-	public void setNextChain(ICandyMachine nextChain) {
+	public void setNextChain(CandyMachine nextChain) {
 		this.chain = nextChain;
 		
 	}
 
 	@Override
 	public void dispense(ProductsMachine productsMachine) {
-		int lollipop= 0;
-		double money = productsMachine.getMoney();
-		while(money >= this.price) {
-			money-= this.price;
-			lollipop++;
-		}
+
+		int lollies = CandyMachine.calculateProduct(productsMachine, this.price);
 		
-		productsMachine.setLollipops(lollipop);
-		productsMachine.setMoney(money);
+		productsMachine.setLollipops(lollies);
 		
 		if(this.chain != null) { this.chain.dispense(productsMachine);}
 	}

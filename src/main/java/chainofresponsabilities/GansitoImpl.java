@@ -1,12 +1,12 @@
 package chainofresponsabilities;
 
-public class GansitoImpl implements ICandyMachine{
+public class GansitoImpl extends CandyMachine{
 	
-	private ICandyMachine chain;
+	private CandyMachine chain;
 	private double price = 12;
 
 	@Override
-	public void setNextChain(ICandyMachine nextChain) {
+	public void setNextChain(CandyMachine nextChain) {
 		this.chain= nextChain;
 		
 	}
@@ -14,15 +14,10 @@ public class GansitoImpl implements ICandyMachine{
 	@Override
 	public void dispense(ProductsMachine productsMachine) {
 		
-		int gansitos= 0;
-		double money = productsMachine.getMoney();
-		while(money >= this.price) {
-			money-= this.price;
-			gansitos++;
-		}
+		int gansitos = CandyMachine.calculateProduct(productsMachine, this.price);
 		
 		productsMachine.setGansitos(gansitos);
-		productsMachine.setMoney(money);
+
 		
 		if(this.chain != null) { this.chain.dispense(productsMachine);}
 	}

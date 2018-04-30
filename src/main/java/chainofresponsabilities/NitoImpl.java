@@ -1,27 +1,21 @@
 package chainofresponsabilities;
 
-public class NitoImpl implements ICandyMachine {
+public class NitoImpl extends CandyMachine {
 	
-	private ICandyMachine chain;
+	private CandyMachine chain;
 	private double price = 8;
 
 	@Override
-	public void setNextChain(ICandyMachine nextChain) {
+	public void setNextChain(CandyMachine nextChain) {
 		this.chain = nextChain;
 		
 	}
 
 	@Override
 	public void dispense(ProductsMachine productsMachine) {
-		int nitos= 0;
-		double money = productsMachine.getMoney();
-		while(money >= this.price) {
-			money-= this.price;
-			nitos++;
-		}
+		int nitos = CandyMachine.calculateProduct(productsMachine, this.price);
 		
 		productsMachine.setNitos(nitos);
-		productsMachine.setMoney(money);
 		
 		if(this.chain != null) { this.chain.dispense(productsMachine);}
 	}
